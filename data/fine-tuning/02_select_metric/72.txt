@@ -1,0 +1,9 @@
+show me both the average of order prices and order costs
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - avg_order_price
+    - avg_order_cost
+- filters: []
+

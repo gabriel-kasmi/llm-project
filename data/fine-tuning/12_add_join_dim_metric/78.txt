@@ -1,0 +1,39 @@
+give me the number of orders and the total discount value grouped by order country and promotion name
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: promotions 
+          sql_on: ${orders.product_id} = ${promotions.product_id}
+  - name: promotions
+    meta:
+      label: Promotions
+    columns:
+      - name: promotion_id
+        description: The unique ID of promotion
+        meta:
+          dimension:
+            type: string
+      - name: promotion_name
+        description: Promotion name
+        meta:
+          dimension:
+            type: string
+      - name: discount_value
+        description: Discount value
+        meta:
+          dimension:
+            type: number
+          metrics: 
+            total_discount_value:
+              description: Total discount value
+              type: sum
+- dimensions:
+    - order_country
+    - promotion_name
+- metrics:
+    - total_discount_value
+    - number_of_orders
+- filters: []
+

@@ -1,0 +1,27 @@
+what is the number of refunded orders by provider and partnership status?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: is_refunded
+        description: Indicates if the item was refunded.
+        meta: 
+          metrics: 
+            number_of_refunded_orders:
+              description: Number of refunded orders.
+              type: count
+              filters:
+                - is_refunded: true
+  - name: providers
+    columns:
+      - name: has_signup_partnership
+        description: Has signup partnership
+        meta:
+          dimension:
+            type: boolean
+- dimensions:
+    - has_signup_partnership
+- metrics:
+    - number_of_refunded_orders
+- filters: []
+

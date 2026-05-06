@@ -1,0 +1,29 @@
+what are the products that were assocaited with promotions and were sold in the US?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: promotions 
+          sql_on: ${orders.product_id} = ${promotions.product_id}
+  - name: promotions
+    meta:
+      label: Promotions
+    columns:
+      - name: promotion_id
+        description: The unique ID of promotion
+        meta:
+          dimension:
+            type: string
+      - name: promotion_type
+        description: Promotion type
+        meta:
+          dimension:
+            type: string
+- dimensions:
+    - product_name
+- metrics: []
+- filters: 
+    - order_country = US
+    - promotion_type != null
+

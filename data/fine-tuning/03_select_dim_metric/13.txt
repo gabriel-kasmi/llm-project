@@ -1,0 +1,10 @@
+give me the number of orders and failed orders per order date (day).
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_date[DAY]
+- metrics:
+    - number_of_orders
+    - number_of_failed_orders
+- filters: []
+

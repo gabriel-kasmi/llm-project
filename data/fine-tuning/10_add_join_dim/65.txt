@@ -1,0 +1,34 @@
+show me the number of users and premium users by ticket status
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: support_tickets 
+          sql_on: ${users.user_id} = ${support_tickets.user_id}
+  - name: users
+    meta:
+      joins:
+        - join: support_tickets 
+          sql_on: ${users.user_id} = ${support_tickets.user_id}
+  - name: support_tickets
+    meta:
+      label: Support tickets
+    columns:
+      - name: ticket_id
+        description: The unique ID of the support ticket
+        meta:
+          dimension:
+            type: string
+      - name: ticket_status
+        description: The status of the ticket
+        meta:
+          dimension:
+            type: string
+- dimensions:
+    - ticket_status
+- metrics:
+    - num_unique_premium_users
+    - number_of_unique_users
+- filters: []
+

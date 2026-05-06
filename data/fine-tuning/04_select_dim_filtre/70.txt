@@ -1,0 +1,11 @@
+show me the list of order countries and month for orders in 2018 with revenue > 5000
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - order_country
+    - order_date[MONT]
+- metrics: []
+- filters: 
+    - order_date[YEAR] = 2018
+    - revenue > 5000
+

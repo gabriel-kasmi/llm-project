@@ -1,0 +1,8 @@
+give me the list of countries from which we have orders
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_country
+- metrics: []
+- filters: []
+

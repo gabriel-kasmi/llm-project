@@ -1,0 +1,8 @@
+give me the number of unique premium users
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - num_unique_premium_users
+- filters: []
+

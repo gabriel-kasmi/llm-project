@@ -1,0 +1,33 @@
+give me the average value of promotions on orders in August 2022
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: promotions 
+          sql_on: ${orders.product_id} = ${promotions.product_id}
+  - name: promotions
+    meta:
+      label: Promotions
+    columns:
+      - name: promotion_id
+        description: The unique ID of promotion
+        meta:
+          dimension:
+            type: string
+      - name: discount_value
+        description: Discount value
+        meta:
+          dimension:
+            type: number
+          metrics: 
+            avg_of_discount_value:
+              description: Average of discount value
+              type: average
+- dimensions: []
+- metrics:
+    - avg_of_discount_value
+- filters:
+    - order_date[YEAR] = 2022
+    - order_date[MONTH] = 8
+

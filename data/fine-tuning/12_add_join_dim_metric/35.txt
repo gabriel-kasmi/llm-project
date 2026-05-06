@@ -1,0 +1,47 @@
+what is the total amount of payments per payment method in 2020?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: payments 
+          sql_on: ${orders.payment_id} = ${payments.payment_id}
+  - name: payments
+    meta:
+      label: Payments
+    columns:
+      - name: payment_id
+        description: The unique ID of payment
+        meta:
+          dimension:
+            type: string
+      - name: payment_amount
+        description: amount of payments received
+        meta:
+          dimension:
+            type: number
+          metrics: 
+            total_payment_amount:
+              description: Total amount of payments received
+              type: sum
+      - name: payment_method
+        description: Payment method
+        meta:
+          dimension:
+            type: string
+      - name: payment_date
+        description: The date of payment
+        meta:
+          dimension:
+            type: date
+            intervals:
+              - DAY
+              - MONTH
+              - YEAR
+- dimensions:
+    - payment_method
+- metrics:
+    - total_payment_amount
+- filters: 
+    - payment_date[YEAR] = 2020
+

@@ -1,0 +1,9 @@
+what is the number of new users created this month?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics:
+    - number_of_new_users
+- filters:
+    - user_created_at[MONTH] = current_month
+

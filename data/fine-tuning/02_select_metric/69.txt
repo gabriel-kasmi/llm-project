@@ -1,0 +1,8 @@
+what is the date of the last order?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - last_order_date
+- filters: []
+

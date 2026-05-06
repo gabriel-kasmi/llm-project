@@ -1,0 +1,10 @@
+show me the total orders cost per provider and order country.
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - provider_name
+    - order_country
+- metrics:
+    - total_order_cost
+- filters: []
+

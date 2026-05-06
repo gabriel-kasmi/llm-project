@@ -1,0 +1,17 @@
+what is the total revenue for premium users with auto renewal?
+=====
+- dimensions and metrics to add:
+  - name: subscriptions
+    columns:
+      - name: auto_renewal
+        description: Indicates if the subscription has auto renewal.
+        meta:
+          dimension:
+            type: boolean
+- dimensions: []
+- metrics:
+    - total_revenue
+- filters:
+    - subscription.plan = "premium"
+    - auto_renewal: true
+

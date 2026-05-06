@@ -1,0 +1,34 @@
+show me the list of products with reviews in April 2020?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: reviews 
+          sql_on: ${orders.review_id} = ${reviews.review_id}
+  - name: reviews
+    meta:
+      label: Reviews
+    columns:
+      - name: review_id
+        description: The unique ID for reviews
+        meta:
+          dimension:
+            type: string
+      - name: review_date
+        description: The date of review
+        meta:
+          dimension:
+            type: date
+            time_intervals:
+              - DAY
+              - MONTH
+              - QUARTER
+              - YEAR
+- dimensions:
+    - product_name
+- metrics: []
+- filters: 
+    - review_date[YEAR] = 2020
+    - review_date[MONTH] = 4
+

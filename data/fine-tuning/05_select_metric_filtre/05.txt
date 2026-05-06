@@ -1,0 +1,10 @@
+give me the total order costs for the product "bed" and the order status "shipped"
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - total_order_cost
+- filters:
+    - product_name = "bed"
+    - order_status = "shipped"
+

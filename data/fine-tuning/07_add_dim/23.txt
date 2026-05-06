@@ -1,0 +1,18 @@
+give me the number of users who made standard subscriptions in january 2020
+=====
+- dimensions and metrics to add:
+  - name: subscriptions
+    columns:
+      - name: start_date
+        description: The start date of the subscription. 
+        meta:
+          dimension:
+            type: date
+- dimensions: []
+- metrics:
+    - number_of_unique_users
+- filters:
+    - start_date[MONTH] = 1
+    - start_date[YEAR] = 2020
+    - subscription.plan = standard
+

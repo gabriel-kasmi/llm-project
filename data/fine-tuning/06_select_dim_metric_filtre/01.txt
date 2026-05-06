@@ -1,0 +1,10 @@
+give me the number of orders in 2016, by month
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - order_date[MONTH]
+- metrics: 
+    - number_of_orders
+- filters: 
+    - order_date[YEAR] = 2016
+

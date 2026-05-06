@@ -1,0 +1,32 @@
+what is the total number of payments per payment method?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: payments 
+          sql_on: ${orders.payment_id} = ${payments.payment_id}
+  - name: payments
+    meta:
+      label: Payments
+    columns:
+      - name: payment_id
+        description: The unique ID of payment
+        meta:
+          dimension:
+            type: string
+          metrics: 
+            number_of_payments:
+              description: Total number of payments received.
+              type: count
+      - name: payment_method
+        description: Payment method
+        meta:
+          dimension:
+            type: string
+- dimensions:
+    - payment_method
+- metrics:
+    - number_of_payments
+- filters: []
+

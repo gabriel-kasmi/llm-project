@@ -1,0 +1,16 @@
+give me the list of products that need customs clearance
+=====
+- dimensions and metrics to add: 
+  - name: products
+    columns:
+      - name: needs_customs_clearance
+        description: Needs customs clearance
+        meta:
+          dimension:
+            type: boolean
+- dimensions:
+    - product_name
+- metrics: []
+- filters:
+    - needs_customs_clearance = true
+

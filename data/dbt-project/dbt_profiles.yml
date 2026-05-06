@@ -1,0 +1,24 @@
+
+dbt_project:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: my_user
+      password: my_password
+      dbname: my_database
+      schema: dbt_dev
+      port: 5439
+      retries: 1
+      threads: 4
+    prod:
+      type: postgres
+      host: postgres
+      user: my_user
+      password: my_password
+      dbname: my_database
+      schema: dbt_prod
+      port: 5439
+      retries: 1
+      threads: 8

@@ -1,0 +1,12 @@
+give me the total cost and price of orders in 2020-12-30?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics:
+    - total_order_price
+    - total_order_cost
+- filters:
+    - order_date[YEAR] = 2020
+    - order_date[MONTH] = 12
+    - order_date[DAY] = 30
+

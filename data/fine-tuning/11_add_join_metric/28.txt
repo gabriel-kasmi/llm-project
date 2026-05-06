@@ -1,0 +1,31 @@
+what is the total amount of payments received?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: payments 
+          sql_on: ${orders.payment_id} = ${payments.payment_id}
+  - name: payments
+    meta:
+      label: Payments
+    columns:
+      - name: payment_id
+        description: Unique ID for payments
+        meta:
+          dimension:
+            type: string
+      - name: payment_amount
+        description: amount of payments received
+        meta:
+          dimension:
+            type: number
+          metrics: 
+            total_payment_amount:
+              description: Total amount of payments received
+              type: sum
+- dimensions: []
+- metrics:
+    - total_payment_amount
+- filters: []
+

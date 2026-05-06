@@ -1,0 +1,25 @@
+what is the average rating of products provided by device type?
+=====
+- dimensions and metrics to add:
+  - name: users
+    columns:
+      - name: device_type 
+        description: The type of device used for the order.
+        meta:
+          dimension: 
+            type: string
+  - name: orders
+    columns:
+      - name: rating
+        description: The rating of the order
+        meta:
+          metrics: 
+            average_product_rating:
+              description: Average rating of the product.
+              type: average
+- dimensions:
+    - device_type
+- metrics:
+    - average_order_rating
+- filters: []
+

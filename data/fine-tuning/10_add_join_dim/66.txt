@@ -1,0 +1,31 @@
+what is the total revenue and order cost per payment method in the US in 2023?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: payments 
+          sql_on: ${orders.payment_id} = ${payments.payment_id}
+  - name: payments
+    meta:
+      label: Payments
+    columns:
+      - name: payment_id
+        description: The unique ID of payment
+        meta:
+          dimension:
+            type: string
+      - name: payment_method
+        description: Payment method
+        meta:
+          dimension:
+            type: string
+- dimensions:
+    - payment_method
+- metrics:
+    - total_revenue
+    - total_order_price
+- filters: 
+    - order_date[YEAR] = 2023
+    - order_country = 'US'
+

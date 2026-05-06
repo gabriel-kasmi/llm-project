@@ -1,0 +1,10 @@
+what is the number of failed orders by product and provider ?
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - product_name
+    - provider_name
+- metrics:
+    - number_of_failed_orders
+- filters: []
+

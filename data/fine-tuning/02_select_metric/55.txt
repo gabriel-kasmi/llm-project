@@ -1,0 +1,8 @@
+give me the number of failed orders
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - number_of_failed_orders
+- filters: []
+

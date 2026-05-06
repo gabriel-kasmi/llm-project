@@ -1,0 +1,10 @@
+what is the total revenue and number of orders from orders placed on weekdays?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics:
+    - total_revenue
+    - number_of_orders
+- filters:
+    - is_weekday_or_weekend = "weekday"
+

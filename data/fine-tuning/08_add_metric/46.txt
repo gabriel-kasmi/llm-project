@@ -1,0 +1,20 @@
+give me the average duration of subscriptions of premium users
+=====
+- dimensions and metrics to add:
+  - name: subscriptions
+    meta:
+      metrics:
+        subscription_duration_months:
+          description: Subscription duration
+          type: number
+          sql: DATEDIFF(MONTH, ${TABLE}.start_date, ${TABLE}.end_date)
+        average_subscription_duration_months:
+          description: Average subscription duration
+          type: number
+          sql: avg(${subscription_duration_months})
+- dimensions: []
+- metrics:
+    - average_subscription_duration_months
+- filters: 
+    - is_premium: true
+

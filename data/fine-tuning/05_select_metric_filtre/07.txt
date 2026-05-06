@@ -1,0 +1,9 @@
+what is the average order price in France?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics:
+    - avg_order_price
+- filters:
+    - order_country = "France"
+

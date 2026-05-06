@@ -1,0 +1,9 @@
+list the product names and their total order prices.
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - product_name
+- metrics:
+    - total_order_price
+- filters: []
+

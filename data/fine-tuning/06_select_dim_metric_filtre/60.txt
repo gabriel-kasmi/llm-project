@@ -1,0 +1,11 @@
+show me the number of premium users who have placed orders in 2015, grouped by country and product
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - order_country
+    - product_name
+- metrics: 
+    - num_unique_premium_users
+- filters: 
+    - order_date[YEAR] = 2015
+

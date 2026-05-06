@@ -1,0 +1,8 @@
+give me the list of providers with whom we have orders
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - provider_name
+- metrics: []
+- filters: []
+

@@ -1,0 +1,9 @@
+show me the average order price by order country.
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_country
+- metrics:
+    - avg_order_price
+- filters: []
+

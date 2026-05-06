@@ -1,0 +1,55 @@
+
+models:
+  - name: subscriptions
+    meta:
+      label: Subscriptions
+      group_details:
+        subscription_details:
+          description: Details about subscription plans and statuses.
+          label: Subscription Details
+    columns:
+      - name: subscription_id
+        description: Unique identifier for the subscription.
+        meta:
+          dimension:
+            type: string
+          metrics:
+            number_of_subscriptions:
+              description: Total number of subscriptions.
+              type: count
+      - name: plan
+        description: Type of subscription plan (e.g., basic, premium).
+        meta:
+          dimension:
+            type: string
+            label: "subscription plan"
+          metrics:
+            count_by_plan:
+              description: Number of subscriptions by plan type.
+              type: count
+              groups:
+                - subscription_details
+          additional_dimensions:
+            is_premium:
+              description: Boolean flag for premium subscriptions.
+              type: boolean
+              sql: ${plan} = 'premium'
+              groups:
+                - subscription_details
+      - name: is_active
+        description: Indicates if the subscription is active.
+        meta:
+          dimension:
+            type: boolean
+            label: "is active subscription"
+          metrics:
+            number_of_active_subscriptions:
+              description: Total number of active subscriptions.
+              type: count
+              filters:
+                - is_active: true
+            number_of_inactive_subscriptions:
+              description: Total number of inactive subscriptions.
+              type: count
+              filters:
+                - is_active: false

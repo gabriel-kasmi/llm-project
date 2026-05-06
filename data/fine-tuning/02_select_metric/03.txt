@@ -1,0 +1,8 @@
+give me the number of shipped products
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - count_unique_products_shipped
+- filters: []
+

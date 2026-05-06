@@ -1,0 +1,11 @@
+give me the revenue and the number of orders in Germany, by month
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - order_date[MONTH]
+- metrics: 
+    - number_of_orders
+    - total_revenue
+- filters: 
+    - order_country: Germany
+

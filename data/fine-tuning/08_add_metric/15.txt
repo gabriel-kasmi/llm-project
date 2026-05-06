@@ -1,0 +1,20 @@
+show me the number of lost products by provider name.
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: product_id
+        description: Unique ID for ordered products.
+        meta:
+          metrics:
+            count_unique_products_lost:
+              description: Number of unique lost products
+              type: count_distinct
+              filters:
+                - order_status: lost
+- dimensions:
+    - provider_name
+- metrics:
+    - count_unique_products_lost
+- filters: []
+

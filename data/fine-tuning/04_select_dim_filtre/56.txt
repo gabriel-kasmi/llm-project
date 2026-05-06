@@ -1,0 +1,9 @@
+give me the list of products which were ordered from the US
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - product_name
+- metrics: []
+- filters: 
+    - order_country: US
+

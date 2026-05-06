@@ -1,0 +1,32 @@
+give me the average duration of promotions on orders in the UK?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: promotions 
+          sql_on: ${orders.product_id} = ${promotions.product_id}
+  - name: promotions
+    meta:
+      label: Promotions
+    metrics:
+      discount_duration_days: 
+        description: Average time taken to fulfill an order (in days).
+        type: number
+        sql: DATEDIFF(DAY, ${TABLE}.start_date, ${TABLE}.end_date)
+      avg_discount_duration_days: 
+        description: Average time taken to fulfill an order (in days).
+        type: number
+        sql: avg(${discount_duration_days})
+    columns:
+      - name: promotion_id
+        description: The unique ID of promotion
+        meta:
+          dimension:
+            type: string
+- dimensions: []
+- metrics:
+    - avg_discount_duration_days
+- filters:
+    - order_country = UK
+

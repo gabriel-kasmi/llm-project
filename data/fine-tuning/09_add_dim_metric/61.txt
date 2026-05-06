@@ -1,0 +1,23 @@
+what is the total refund amount for orders that were fullfilled in 2022?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: refund_amount
+        description: The amount refunded for the order.
+        meta:
+          metrics: 
+            total_refund_amount: 
+              description: Total refund amount.
+              type: sum
+      - name: order_fulfilled_at 
+        description: the date on which the order was officially fullfilled
+        meta: 
+          dimension:
+            type: date
+- dimensions: []
+- metrics:
+    - total_refund_amount
+- filters:
+    - order_fulfilled_at[YEAR] = 2022
+

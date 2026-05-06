@@ -1,0 +1,10 @@
+what is the maximum and minimum delivery cost by country ?
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_country
+- metrics:
+    - max_delivery_cost
+    - min_delivery_cost
+- filters: []
+

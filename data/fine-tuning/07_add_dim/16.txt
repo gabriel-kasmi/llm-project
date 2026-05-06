@@ -1,0 +1,22 @@
+give me the number of users whose subscription started and ended in 2025
+=====
+- dimensions and metrics to add:
+  - name: subscriptions
+    columns:
+      - name: start_date
+        description: The start date of the subscription. 
+        meta:
+          dimension:
+            type: date
+      - name: end_date
+        description: The end date of the subscription. 
+        meta:
+          dimension:
+            type: date
+- dimensions: []
+- metrics:
+    - number_of_unique_users
+- filters:
+    - start_date[YEAR] = 2025
+    - end_date[YEAR] = 2025
+

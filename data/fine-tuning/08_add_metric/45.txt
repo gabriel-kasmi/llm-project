@@ -1,0 +1,18 @@
+what is the US vs non-US revenue contribution by provider ?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      metrics:
+        non_us_revenue_percentage:
+          description: Percent of total global revenue coming from outside the US.
+          type: number
+          sql: 1 - ${us_revenue_percentage}
+          format: 0.00%
+- dimensions:
+    - provider_name
+- metrics:
+    - us_revenue_percentage
+    - non_us_revenue_percentage
+- filters: []
+

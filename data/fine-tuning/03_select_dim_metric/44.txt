@@ -1,0 +1,11 @@
+what is the monthly revenue and gross margin by provider ?
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_date[MONTH]
+    - provider_name
+- metrics:
+    - total_revenue
+    - total_gross_profit_margin
+- filters: []
+

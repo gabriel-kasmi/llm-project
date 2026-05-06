@@ -1,0 +1,38 @@
+what is the number of reviews in decembre 2023?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: reviews 
+          sql_on: ${orders.review_id} = ${reviews.review_id}
+  - name: reviews
+    meta:
+      label: Reviews
+    columns:
+      - name: review_id
+        description: The unique ID for reviews
+        meta:
+          dimension:
+            type: string
+          metrics: 
+            number_of_reviews:
+              description: Average number of reviews
+              type: count
+      - name: review_date
+        description: Review date
+        meta:
+          dimension:
+            type: date
+            time_intervals:
+              - DAY
+              - MONTH
+              - QUARTER
+              - YEAR
+- dimensions: []
+- metrics:
+    - number_of_reviews
+- filters: 
+    - review_date[YEAR] = 2023
+    - review_date[MONTH] = 12
+

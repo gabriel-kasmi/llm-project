@@ -1,0 +1,16 @@
+what is the total revenue from mobile users?
+=====
+- dimensions and metrics to add:
+  - name: users
+    columns:
+      - name: device_type 
+        description: The type of device used for the order.
+        meta:
+          dimension: 
+            type: string
+- dimensions: []
+- metrics:
+    - total_revenue
+- filters:
+    - device_type = "mobile"
+

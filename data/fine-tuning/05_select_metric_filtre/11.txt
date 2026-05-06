@@ -1,0 +1,9 @@
+what is the 90th percentile order price for orders with status "shipped"?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics:
+    - 90_percentile_order_price
+- filters:
+    - order_status = "shipped"
+

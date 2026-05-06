@@ -1,0 +1,9 @@
+give me the average order price for orders from the US
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics: 
+    - avg_order_price
+- filters:
+    - order_country = 'US'
+

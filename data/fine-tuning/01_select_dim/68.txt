@@ -1,0 +1,9 @@
+give me the list of years and months in which we have orders
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_date[YEAR]
+    - order_date[MONTH]
+- metrics: []
+- filters: []
+

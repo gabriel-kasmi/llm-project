@@ -1,0 +1,11 @@
+give me the gross profit margin per country in Mars 2021?
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - order_country
+- metrics:
+    - total_gross_profit_margin
+- filters:
+    - order_date[MONTH] = 'Mars'
+    - order_date[YEAR] = '2021'
+

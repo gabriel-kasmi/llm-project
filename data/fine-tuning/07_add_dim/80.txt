@@ -1,0 +1,17 @@
+give me the list of providers cities in the UK in which there are providers with signed partnership
+=====
+- dimensions and metrics to add: 
+  - name: providers
+    columns:
+      - name: has_signup_partnership
+        description: Has signup partnership
+        meta:
+          dimension:
+            type: boolean
+- dimensions:
+    - provider_city
+- metrics: []
+- filters:
+    - provider_country = UK
+    - has_signup_partnership = true
+

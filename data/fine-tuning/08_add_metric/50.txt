@@ -1,0 +1,20 @@
+what is the average processing duration of orders placed on weekdays?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta: 
+      metrics:
+        processing_duration_days:
+          description: Processing duration of the order
+          type: number
+          sql: DATEDIFF(MONTH, ${TABLE}.order_date, ${TABLE}.order_fulfilled_at)
+        avg_processing_duration_days:
+          description: Average processing duration of orders
+          type: number
+          sql: avg(${processing_duration_days})
+- dimensions: []
+- metrics:
+    - avg_processing_duration_days
+- filters:
+    - is_weekday_or_weekend = "weekday"
+

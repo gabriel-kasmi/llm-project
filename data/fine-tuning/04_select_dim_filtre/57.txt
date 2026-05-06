@@ -1,0 +1,10 @@
+show me the list of providers with orders > 100 and revenue > 10000
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - provider_name
+- metrics: []
+- filters: 
+    - number_of_orders > 100
+    - total_revenue > 10000
+

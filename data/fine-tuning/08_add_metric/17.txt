@@ -1,0 +1,17 @@
+show me the total discount amount given.
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: voucher_discount_amount 
+        description: The amount of discount applied to the order.
+        meta:
+          metrics: 
+            total_voucher_discount_amount: 
+              description: Total discount amount.
+              type: sum
+- dimensions: []
+- metrics:
+    - total_voucher_discount_amount
+- filters: []
+

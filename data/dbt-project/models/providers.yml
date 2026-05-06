@@ -1,0 +1,63 @@
+
+models:
+  - name: providers
+    meta:
+      label: Providers
+      group_details:
+        location_info:
+          description: Location-related information about providers.
+          label: Location Info
+        provider_details:
+          description: Basic details about the providers.
+          label: Provider Details
+    columns:
+      - name: provider_id
+        description: Unique identifier for the provider.
+        meta:
+          dimension:
+            type: string
+          metrics:
+            number_of_providers:
+              description: Total number of providers.
+              type: count
+
+      - name: provider_name
+        description: Name of the provider.
+        meta:
+          dimension:
+            type: string
+          metrics:
+            count_unique_provider_names:
+              description: Number of unique provider names.
+              type: count_distinct
+          additional_dimensions:
+            provider_name_upper:
+              description: Uppercased provider name.
+              type: string
+              sql: UPPER(${provider_name})
+              groups:
+                - provider_details
+
+      - name: provider_country
+        description: Country where the provider is located.
+        meta:
+          dimension:
+            type: string
+          metrics:
+            count_by_country:
+              description: Number of providers by country.
+              type: count
+              groups:
+                - location_info
+
+      - name: provider_city
+        description: City where the provider is located.
+        meta:
+          dimension:
+            type: string
+          metrics:
+            count_by_city:
+              description: Number of providers by city.
+              type: count
+              groups:
+                - location_info

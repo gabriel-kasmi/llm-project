@@ -1,0 +1,28 @@
+what are the types of promotions that were assocaited with orders in 2020?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: promotions 
+          sql_on: ${orders.product_id} = ${promotions.product_id}
+  - name: promotions
+    meta:
+      label: Promotions
+    columns:
+      - name: promotion_id
+        description: The unique ID of promotion
+        meta:
+          dimension:
+            type: string
+      - name: promotion_type
+        description: Promotion type
+        meta:
+          dimension:
+            type: string
+- dimensions:
+    - promotion_type
+- metrics: []
+- filters: 
+    - order_date[YEAR] = 2020
+

@@ -1,0 +1,9 @@
+what are the products that were associated with failed orders?
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - product_name
+- metrics: []
+- filters: 
+    - order_status = Failed
+

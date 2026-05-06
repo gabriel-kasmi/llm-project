@@ -1,0 +1,10 @@
+give me the average order price per country in 2024
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - order_country
+- metrics: 
+    - avg_order_price
+- filters: 
+    - order_date[YEAR] = 2024
+

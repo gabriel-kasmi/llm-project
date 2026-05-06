@@ -1,0 +1,46 @@
+show me the number of closed tickets in 2022
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: support_tickets 
+          sql_on: ${users.user_id} = ${support_tickets.user_id}
+  - name: users
+    meta:
+      joins:
+        - join: support_tickets 
+          sql_on: ${users.user_id} = ${support_tickets.user_id}
+  - name: support_tickets
+    meta:
+      label: Support tickets
+    columns:
+      - name: ticket_id
+        description: The unique ID of the support ticket
+        meta:
+          dimension:
+            type: string
+          metrics: 
+            number_of_support_tickets:
+              description: Number of support tickets created.
+              type: count
+      - name: ticket_closed_at
+        description: Date when the ticket was closed
+        meta:
+          dimension:
+            type: date
+            time_intervals:
+              - MONTH
+              - YEAR
+      - name: ticket_status
+        description: The status of the ticket
+        meta:
+          dimension:
+            type: string
+- dimensions: []
+- metrics:
+    - number_of_support_tickets
+- filters:
+    - ticket_closed_at[YEAR] = 2022
+    - ticket_status = closed
+

@@ -1,0 +1,19 @@
+what is the total refund amount in january 2024?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: refund_amount
+        description: The amount refunded for the order.
+        meta:
+          metrics: 
+            total_refund_amount: 
+              description: Total refund amount.
+              type: sum
+- dimensions: []
+- metrics:
+    - total_refund_amount
+- filters:
+    - order_date[YEAR] = 2024
+    - order_date[MONTH] = 1
+

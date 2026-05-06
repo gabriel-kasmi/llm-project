@@ -1,0 +1,99 @@
+
+models:
+  - name: users
+    meta:
+      label: Users
+      joins:
+        - join: subscriptions
+          sql_on: ${users.subscription_id} = ${subscriptions.subscription_id}
+    columns:
+      - name: user_id
+        description: Unique identifier for the user
+        meta:
+          dimension:
+            type: string
+          metrics:
+            number_of_unique_users:
+              description: Number of unique users
+              type: count_distinct
+            num_unique_premium_users:
+              description: Number of unique premium users
+              type: count_distinct
+              filters:
+                - subscriptions.plan: premium
+      - name: first_name
+        description: First name of the user
+        meta:
+          dimension:
+            type: string
+          groups:
+            - user_profile
+      - name: last_name
+        description: Last name of the user
+        meta:
+          dimension:
+            type: string
+          groups:
+            - user_profile
+      - name: age
+        description: Age of the user
+        meta:
+          dimension:
+            type: number
+          metrics:
+            avg_age:
+              description: Average age of users
+              type: average
+            max_age:
+              description: Maximum age of users
+              type: max
+            min_age:
+              description: Minimum age of users
+              type: min
+          groups:
+            - user_profile
+      - name: user_segment
+        description: Segment to which the user belongs
+        meta:
+          dimension:
+            type: string
+          groups:
+            - user_profile
+      - name: user_created_at
+        description: Date when the user was created
+        meta:
+          dimension:
+            type: timestamp
+            time_intervals:
+              - DAY
+              - WEEK
+              - MONTH
+              - YEAR
+          additional_dimensions:
+            signup_day_of_week:
+              description: Day of the week the user signed up
+              type: string
+              sql: TO_CHAR(${user_created_at}, 'Day')
+          metrics:
+            num_users_created:
+              description: Number of users created
+              type: count
+          groups:
+            - engagement
+      - name: first_payment_date
+        description: Date of first payment
+        meta:
+          dimension:
+            type: date
+          additional_dimensions:
+            days_to_first_payment:
+              description: Days between user creation and first payment
+              type: number
+              sql: DATEDIFF(DAY, ${user_created_at}, ${first_payment_date})
+          groups:
+            - engagement
+      - name: subscription_id
+        description: Subscription ID linked to user
+        meta:
+          dimension:
+            type: string

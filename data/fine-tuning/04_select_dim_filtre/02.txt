@@ -1,0 +1,9 @@
+give me the products with failed orders > 10
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - product_name
+- metrics: []
+- filters: 
+    - number_of_failed_orders > 10
+

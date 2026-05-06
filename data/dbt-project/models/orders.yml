@@ -1,0 +1,184 @@
+
+models:
+  - name: orders
+    meta:
+      label: Orders
+      joins:
+        - join: users
+          sql_on: ${orders.user_id} = ${users.user_id}
+        - join: subscriptions
+          sql_on: ${users.subscription_id} = ${subscriptions.subscription_id}
+        - join: products
+          sql_on: ${orders.product_id} = ${products.product_id}
+        - join: providers
+          sql_on: ${products.provider_id} = ${providers.provider_id}
+      metrics:
+        total_gross_profit_margin_percentage:
+          description: Total gross profit margin percentage.
+          type: number
+          sql: (${total_gross_profit_margin} / NULLIF(${total_order_price},0))
+        us_revenue_percentage:
+          description: Percent of total global revenue coming from US revenue.
+          type: number
+          sql: ${total_us_revenue} / NULLIF(${total_revenue},0))
+          format: 0.00%
+      group_details:
+        finance:
+          description: Finance-related fields.
+          label: Finance
+        product_details:
+          description: Fields that have information about the products in the basket.
+          label: Product Details
+    columns:
+      - name: delivery_cost
+        description: Delivery cost
+        meta:
+          metrics:
+            max_delivery_cost:
+              description: Max delivery cost
+              type: max
+            min_delivery_cost:
+              description: Min delivery cost
+              type: min
+            total_delivery_cost:
+              description: Total delivery cost
+              type: sum
+      - name: gross_profit_margin
+        description: Gross profit margin
+        meta:
+          metrics:
+            total_gross_profit_margin:
+              description: Total gross profit margin
+              type: sum
+            avg_gross_profit_margin:
+              description: Average gross profit margin
+              type: average
+      - name: metadata
+        description: order Metadata
+        meta:
+          dimension:
+            type: string
+          additional_dimensions:
+            version:
+              type: number
+              sql: JSON_VALUE(${metadata}, '$.version')
+            tool_name:
+              type: string
+              sql: JSON_VALUE(${metadata}, '$.tool_name')
+      - name: order_cost
+        description: Order cost
+        meta:
+          metrics:
+            total_order_cost:
+              description: Total order cost
+              type: sum
+      - name: order_country
+        description: Order country
+        meta:
+          dimension:
+            type: string
+      - name: order_date
+        description: Date of the order.
+        meta:
+          dimension:
+            label: order date (UTC)
+            type: timestamp
+            time_intervals:
+              - DAY
+              - WEEK
+              - DAY_OF_WEEK_INDEX
+              - MONTH
+              - YEAR
+          additional_dimensions:
+            is_weekday_or_weekend:
+              description: Is it a weekday or a weekend?
+              label: Weekday or Weekend
+              type: string
+              sql: case when day_of_week(${TABLE}.order_date) < 5 then 'weekday' else 'weekend' end
+            order_date_est:
+              description: Order date in EST
+              label: order date (EST)
+              type: timestamp
+              sql: convert_timezone('UTC', 'America/New_York', ${TABLE}.order_date)
+          metrics:
+            last_order_date:
+              description: Last order date
+              type: date
+              sql: MAX(${TABLE}.order_date)
+      - name: order_id
+        description: Unique ID for orders
+        meta:
+          dimension:
+            type: string
+          metrics:
+            number_of_orders:
+              description: Number of orders
+              type: count
+            number_of_failed_orders:
+              description: Number of failed orders
+              type: count
+              filters:
+                - order_status:
+                    - Failed
+      - name: order_price
+        description: Order price
+        meta:
+          metrics:
+            total_order_price:
+              description: Total order price
+              type: sum
+            90_percentile_order_price:
+              description: 90th percentile order price
+              type: percentile
+              percentile: 90
+            avg_order_price:
+              description: Average order price
+              type: average
+            is_avg_order_price_above_20:
+              description: Is the average order price above 20?
+              type: boolean
+              sql: IF(${avg_order_price} > 20, TRUE, FALSE)
+      - name: order_status
+        description: Status of the order
+        meta:
+          dimension:
+            type: string
+      - name: product_id
+        description: Unique ID for ordered products.
+        meta:
+          dimension:
+            type: string
+          metrics:
+            count_unique_products_shipped:
+              description: Number of unique shipped products
+              type: count_distinct
+              filters:
+                - order_status: shipped
+      - name: provider_id
+        description: Unique ID for providers
+        meta:
+          dimension:
+            type: string
+      - name: revenue
+        description: Total estimated revenue
+        meta:
+          metrics:
+            total_revenue:
+              description: Total revenue, defaulting to 10 if null
+              label: Total revenue
+              type: number
+              sql: sum(IF(${TABLE}.revenue} IS NULL, 10, ${TABLE}.revenue))
+              groups:
+                - product_details
+              show_underlying_values:
+                - revenue
+            total_us_revenue:
+              description: Total estimated revenue in the US
+              type: sum
+              filters:
+                - order_country: US
+      - name: user_id
+        description: Unique ID for users
+        meta:
+          dimension:
+            type: string

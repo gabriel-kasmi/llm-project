@@ -1,0 +1,17 @@
+
+sources:
+  - name: orders_model
+    database: my_database
+    schema: public  
+    tables:
+      - name: subscriptions
+      - name: users
+      - name: user_sessions
+      - name: payments
+      - name: providers
+      - name: products
+      - name: cart_events
+      - name: promotions
+      - name: orders
+      - name: support_tickets
+      - name: reviews

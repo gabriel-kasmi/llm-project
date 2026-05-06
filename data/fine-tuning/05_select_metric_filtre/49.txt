@@ -1,0 +1,9 @@
+what is the total cost of weekday orders only?
+=====
+- dimensions and metrics to add:
+- dimensions: []
+- metrics:
+    - total_order_cost
+- filters:
+    - is_weekday_or_weekend: weekday
+

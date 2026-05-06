@@ -1,0 +1,19 @@
+what is the average rating of products ordered from premium users in Germany?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: rating
+        description: Product rating
+        meta: 
+          metrics:
+            average_product_rating: 
+              description: Average rating of the product.
+              type: average
+- dimensions: []
+- metrics:
+    - average_product_rating
+- filters:
+    - order_country = "Germany"
+    - subscription.plan = "premium"
+

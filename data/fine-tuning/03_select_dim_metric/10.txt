@@ -1,0 +1,9 @@
+how many unique users were created in each quarter?
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - user_created_at[QUARTER]
+- metrics:
+    - number_of_unique_users
+- filters: []
+

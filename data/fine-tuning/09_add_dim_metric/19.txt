@@ -1,0 +1,23 @@
+list the average order fulfillment time by product category.
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: order_fulfilled_at 
+        description: the date on which the order was officially fullfilled
+        meta: 
+          metrics: 
+            order_fulfillment_duration_days: 
+              description: Average time taken to fulfill an order (in days).
+              type: number
+              sql: DATEDIFF(DAY, ${TABLE}.order_date, ${TABLE}.order_fulfilled_at)
+            average_order_fulfillment_duration_days: 
+              description: Average time taken to fulfill an order (in days).
+              type: number
+              sql: avg(${order_fulfillment_duration_days})
+- dimensions:
+    - product_category
+- metrics:
+    - average_order_fulfillment_duration_days
+filters: []
+

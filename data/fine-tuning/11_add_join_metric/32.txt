@@ -1,0 +1,31 @@
+show me the number of support tickets created.
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: support_tickets 
+          sql_on: ${users.user_id} = ${support_tickets.user_id}
+  - name: users
+    meta:
+      joins:
+        - join: support_tickets 
+          sql_on: ${users.user_id} = ${support_tickets.user_id}
+  - name: support_tickets
+    meta:
+      label: Support tickets
+    columns:
+      - name: ticket_id
+        description: The unique ID of the support ticket
+        meta:
+          dimension:
+            type: string
+          metrics: 
+            number_of_support_tickets:
+              description: Number of support tickets created.
+              type: count
+- dimensions: []
+- metrics:
+    - number_of_support_tickets
+- filters: []
+

@@ -1,0 +1,18 @@
+give me the average delivery cost for orders in 2018
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: delivery_cost
+        description: Delivery cost
+        meta:
+          metrics:
+            avg_delivery_cost:
+              description: Average delivery cost
+              type: avg
+- dimensions: []
+- metrics: 
+    - avg_delivery_cost
+- filters:
+    - order_date[YEAR] = 2018
+

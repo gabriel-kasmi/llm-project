@@ -1,0 +1,22 @@
+show me the churn rate of users by the signup source
+=====
+- dimensions and metrics to add: 
+  - name: users
+    meta: 
+      metrics:
+        churn_rate: 
+          description: Ratio of users who churned in a given period.
+          type: number
+          sql: SUM(CASE WHEN ${subscriptions.is_active} = FALSE THEN 1 ELSE 0 END) / NULLIF(${number_of_unique_users}, 0)
+    columns:
+      - name: signup_source 
+        description: The source through which the user signed up.
+        meta: 
+          dimension:
+            type: string
+- dimensions:
+    - signup_source
+- metrics:
+    - churn_rate
+- filters: []
+

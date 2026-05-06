@@ -1,0 +1,17 @@
+show me the number of active users by their signup source.
+=====
+- dimensions and metrics to add:
+  - name: users
+    columns:
+      - name: signup_source 
+        description: The source through which the user signed up.
+        meta: 
+          dimension:
+            type: string
+- dimensions:
+    - signup_source
+- metrics:
+    - number_of_unique_users
+- filters:
+    - is_active = true
+

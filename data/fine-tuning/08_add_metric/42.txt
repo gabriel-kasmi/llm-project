@@ -1,0 +1,20 @@
+what is the number of cancelled orders by weekday/weekend ?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: order_id
+        description: Unique ID for orders.
+        meta: 
+          metrics:
+            number_of_cancelled_orders: 
+              description: Number of cancelled orders.
+              type: count
+              filters:
+                - order_status: cancelled
+- dimensions:
+    - is_weekday_or_weekend
+- metrics:
+    - number_of_cancelled_orders
+- filters: []
+

@@ -1,0 +1,22 @@
+show me the total revenue by user signup source and user segment.
+=====
+- dimensions and metrics to add:
+  - name: users
+    columns:
+      - name: signup_source 
+        description: The source through which the user signed up.
+        meta: 
+          dimension:
+            type: string
+      - name: user_segment 
+        description: The segment the user belongs to.
+        meta:
+          dimension:
+            type: string
+- dimensions:
+    - signup_source
+    - user_segment
+- metrics:
+    - total_revenue
+- filters: []
+

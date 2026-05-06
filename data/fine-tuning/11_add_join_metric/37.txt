@@ -1,0 +1,34 @@
+give me the average of rating with the total revenu of orders by month in 2020
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: reviews 
+          sql_on: ${orders.review_id} = ${reviews.review_id}
+  - name: reviews
+    meta:
+      label: Reviews
+    columns:
+      - name: review_id
+        description: The unique ID for reviews
+        meta:
+          dimension:
+            type: string
+      - name: review_rating
+        description: order review rating
+        meta:
+          dimension:
+            type: number
+          metrics: 
+            avg_of_review_ratings:
+              description: Average number of reviews
+              type: average
+- dimensions:
+    - order_date[MONTH]
+- metrics:
+    - total_revenue
+    - avg_of_review_ratings
+- filters:
+    - order_date[YEAR] = 2020
+

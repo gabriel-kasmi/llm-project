@@ -1,0 +1,32 @@
+what is the average of review ratings per product?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    meta:
+      joins:
+        - join: reviews 
+          sql_on: ${orders.review_id} = ${reviews.review_id}
+  - name: reviews
+    meta:
+      label: Reviews
+    columns:
+      - name: review_id
+        description: The unique ID for reviews
+        meta:
+          dimension:
+            type: string
+      - name: review_rating
+        description: order review rating
+        meta:
+          dimension:
+            type: number
+          metrics: 
+            avg_of_review_ratings:
+              description: Average number of reviews
+              type: average
+- dimensions:
+    - product_name
+- metrics:
+    - avg_of_review_ratings
+- filters: []
+

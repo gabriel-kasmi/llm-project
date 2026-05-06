@@ -1,0 +1,10 @@
+give me the IDs and prices of the orders with a price higher than 100
+=====
+- dimensions and metrics to add:
+- dimensions: 
+    - order_id
+    - order_price
+- metrics: []
+- filters: 
+    - order_price >= 100
+

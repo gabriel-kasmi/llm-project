@@ -1,0 +1,8 @@
+show me the list of products for which we had orders
+=====
+- dimensions and metrics to add:
+- dimensions:
+    - product_name
+- metrics: []
+- filters: []
+

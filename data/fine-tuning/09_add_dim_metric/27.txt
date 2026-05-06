@@ -1,0 +1,25 @@
+what is the number of orders with vouchers grouped by voucher partner name?
+=====
+- dimensions and metrics to add:
+  - name: orders
+    columns:
+      - name: voucher_partner_name
+        description: Voucher partner name
+        meta: 
+          dimension: 
+            type: boolean
+      - name: voucher_discount_amount
+        description: Voucher discount amount
+        meta:
+          metrics:
+            number_of_orders_with_vouchers:
+              description: Number of orders with vouchers
+              type: count
+              filters:
+                - voucher_discount_amount > 0
+- dimensions:
+    - voucher_partner_name
+- metrics:
+    - number_of_orders_with_vouchers
+- filters: []
+
