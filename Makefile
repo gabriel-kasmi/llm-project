@@ -1,4 +1,4 @@
-.PHONY: run-postgres stop-postgres run-backend run-frontend run-lightdash activate-pgvector install-frontend build-frontend
+.PHONY: run-postgres stop-postgres run-backend run-frontend run-lightdash activate-pgvector install-frontend build-frontend clear
 
 ifneq (,$(wildcard ./.env))
     include .env
@@ -14,6 +14,20 @@ DB_PORT_HOST = 5432
 LIGHTDASH_CONTAINER = lightdash
 BACKEND_CONTAINER = backend
 FRONTEND_CONTAINER = frontend
+
+clean:
+	rm -rf .venv/
+	find . -type d -name ".mypy_cache" -exec rm -rf {} +
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	rm -f data/*.pkl
+	rm -f backend/.coverage
+	rm -rf backend/.pytest_cache/
+	rm -rf backend/*.egg-info/
+	rm -rf backend/build/
+	rm -rf backend/htmlcov/
+	rm -rf frontend/coverage/
+	rm -rf frontend/dist/
+	rm -rf frontend/node_modules/
 
 install-frontend:
 	cd frontend && npm install
