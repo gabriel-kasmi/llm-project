@@ -21,6 +21,7 @@ clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	rm -f data/*.pkl
 	rm -f backend/.coverage
+	rm -rf backend/.venv
 	rm -rf backend/.pytest_cache/
 	rm -rf backend/*.egg-info/
 	rm -rf backend/build/
